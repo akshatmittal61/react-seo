@@ -15,7 +15,7 @@ const Home = () => {
 				<meta property="og:title" content="GitHub Profile Search" />
 				<meta
 					property="og:image"
-					content="https://avatars.githubusercontent.com/u/1?v=4"
+					content="https://avatars.githubusercontent.com/u/0?v=4"
 				/>
 				<meta
 					property="og:description"
