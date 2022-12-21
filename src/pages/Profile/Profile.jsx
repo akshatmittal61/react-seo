@@ -14,10 +14,38 @@ const Profile = () => {
 			setProfile(() => res);
 		};
 		getProfile();
-		document.title = `${
+	}, [username]);
+	useEffect(() => {
+		const title = `${
 			profile?.name ? profile.name : username
 		} | GitHub Profile Search`;
-	}, [profile.name, username]);
+		document.title = title;
+		const ogImage = document.createElement("meta");
+		ogImage.setAttribute("property", "og:image");
+		ogImage.setAttribute("content", profile?.avatar_url);
+		// document.head.appendChild(ogImage);
+		document.head.replaceChild(
+			ogImage,
+			document.head.querySelector('meta[property="og:image"]')
+		);
+		const ogTitle = document.createElement("meta");
+		ogTitle.setAttribute("property", "og:title");
+		ogTitle.setAttribute("content", title);
+		// document.head.appendChild(ogTitle);
+		document.head.replaceChild(
+			ogTitle,
+			document.head.querySelector('meta[property="og:title"]')
+		);
+		const ogDescription = document.createElement("meta");
+		ogDescription.setAttribute("property", "og:description");
+		ogDescription.setAttribute("content", profile?.bio);
+		// document.head.appendChild(ogDescription);
+		document.head.replaceChild(
+			ogDescription,
+			document.head.querySelector('meta[property="og:description"]')
+		);
+		console.log(ogImage, ogTitle, ogDescription);
+	}, [profile, username]);
 
 	return (
 		<main className="profile">

@@ -9,7 +9,6 @@ import routes from "./routes";
 
 const Wrapper = () => {
 	AOS.init();
-	console.log(routes);
 	return (
 		<>
 			<Routes>
